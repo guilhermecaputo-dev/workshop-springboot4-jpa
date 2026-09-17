@@ -20,6 +20,7 @@ public class OrderService {
     }
 
     public Order findById(Long id){
-        return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+        return orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
     }
 }
