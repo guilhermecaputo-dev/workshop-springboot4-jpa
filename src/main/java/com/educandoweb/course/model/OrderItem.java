@@ -1,6 +1,7 @@
 package com.educandoweb.course.model;
 
 import com.educandoweb.course.model.pk.OrderItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -10,11 +11,11 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "tb_oder_item")
+@Table(name = "tb_odrer_item")
 public class OrderItem implements Serializable {
 
     @EmbeddedId
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
     private Double price;
@@ -28,6 +29,7 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public Order getOrder(){
         return id.getOrder();
     }
