@@ -2,6 +2,7 @@ package com.educandoweb.course.service;
 
 import com.educandoweb.course.model.User;
 import com.educandoweb.course.repository.UserRepository;
+import com.educandoweb.course.service.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class UserService {
 
     public User findUserById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public User insert(User obj){
